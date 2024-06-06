@@ -29,6 +29,17 @@ function App() {
       ],
       url: "https://github.com/Mat-Alexandre/Credit-Score-Prediction-Model/blob/main/Case.ipynb",
     },
+
+    {
+      year: 2023,
+      title: "BRL Counter Using Computer Vision",
+      content: [
+        "Treinamento de modelo de visão computacional",
+        "Rotulação de imagens para criação de dataset",
+        "Utilização de Redes Neurais Convolucionais",
+      ],
+      url: "https://github.com/Mat-Alexandre/Coin-Counter",
+    },
   ];
 
   return (
