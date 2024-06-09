@@ -42,6 +42,12 @@ function App() {
     },
   ];
 
+  const handleMenuClick = () => {
+    setIsActive(!isActive);
+  };
+
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <>
       <header className="header">
@@ -49,9 +55,13 @@ function App() {
           Matheus <span>Alexandre</span>
         </a>
 
-        <i className="bx bx-menu" id="menu-icon"></i>
+        <i
+          onClick={handleMenuClick}
+          className={isActive ? "bx bx-x" : "bx bx-menu"}
+          id="menu-icon"></i>
 
-        <nav className="navbar">
+        <nav
+          className={isActive ? "navbar" : "navbar active"}>
           <a href="#home">Home</a>
           <a href="#projects">Projetos</a>
           <a href="#contact">Contato</a>
