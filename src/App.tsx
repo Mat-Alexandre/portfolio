@@ -1,45 +1,85 @@
 import { useState } from "react";
 import "./App.css";
+
 import profile_pic from "./assets/profile-pic.jpeg";
+import ChartSvg from "./assets/chart.svg";
+import EaselSvg from "./assets/easel.svg";
+import EyeSvg from "./assets/eye.svg";
+import MortarboardSvg from "./assets/mortarboard.svg";
+import PersonSvg from "./assets/person.svg";
+import VirusSvg from "./assets/virus.svg";
+
 import TimelineItem, {
   TimelineItemProps,
 } from "./components/TimelineItem";
+import ProjectItem, {
+  ProjectItemInterface,
+} from "./components/ProjectsItem";
 
 function App() {
+  const projects: ProjectItemInterface[] = [
+    {
+      title: "Breakthrough de Pacientes Hospitalizados",
+      description:
+        "Extração de dados desorganizados oriundos de fontes heterogêneas. Limpeza de dados públicos. Estudo estatístico do perfil dos pacientes. Aplicatição de algoritmos de aprendizado de máquina",
+      url: "https://github.com/Mat-Alexandre/Covid-Analysis/blob/main/Data%20cleaning%20-%20Covid.ipynb",
+      children: <VirusSvg />,
+    },
+
+    {
+      title: "Credit Score Prediction",
+      description:
+        "Processo de análise exploratória dos dados. Escalonamento de variáveis. Treinamento de algoritmos de aprendizado de máquina. Refinamento de parâmetros",
+      url: "https://github.com/Mat-Alexandre/Credit-Score-Prediction-Model/blob/main/Case.ipynb",
+      children: <ChartSvg />,
+    },
+
+    {
+      title: "BRL Counter Using Computer Vision",
+      description:
+        "Treinamento de modelo de visão computacional. Rotulação de imagens para criação de dataset. Utilização de Redes Neurais Convolucionais",
+      url: "https://github.com/Mat-Alexandre/Coin-Counter",
+      children: <EyeSvg />,
+    },
+  ];
+
   const experiences: TimelineItemProps[] = [
     {
-      year: 2021,
-      title: "Breakthrough de Pacientes Hospitalizados",
-      content: [
-        "Extração de dados desorganizados oriundos de fontes heterogêneas",
-        "Limpeza de dados públicos",
-        "Estudo estatístico do perfil dos pacientes",
-        "Aplicatição de algoritmos de aprendizado de máquina",
-      ],
-      url: "https://github.com/Mat-Alexandre/Covid-Analysis/blob/main/Data%20cleaning%20-%20Covid.ipynb",
+      startYear: 2009,
+      endYear: 2013,
+      title: "Colégio Militar de Belo Horizonte",
+      content: ["Ensino Fundamental", "Ensino Médio"],
     },
 
     {
-      year: 2022,
-      title: "Credit Score Prediction",
+      startYear: 2017,
+      endYear: 2021,
+      title: "Faculdade",
       content: [
-        "Processo de análise exploratória dos dados",
-        "Escalonamento de variáveis",
-        "Treinamento de algoritmos de aprendizado de máquina",
-        "Refinamento de parâmetros",
+        "Universidade Federal de São João del-Rei",
+        "Graduação em Ciência da Computação",
       ],
-      url: "https://github.com/Mat-Alexandre/Credit-Score-Prediction-Model/blob/main/Case.ipynb",
     },
 
     {
-      year: 2023,
-      title: "BRL Counter Using Computer Vision",
+      startYear: 2021,
+      endYear: 2021,
+      title: "Pesquisador",
       content: [
-        "Treinamento de modelo de visão computacional",
-        "Rotulação de imagens para criação de dataset",
-        "Utilização de Redes Neurais Convolucionais",
+        "Iniciação Científica UFSJ",
+        "Perfil dos pacientes brasileiros internados com Covid-19",
       ],
-      url: "https://github.com/Mat-Alexandre/Coin-Counter",
+    },
+
+    {
+      startYear: 2022,
+      endYear: 2022,
+      title: "Analista de Dados - Loggi Tecnologia",
+      content: [
+        "Geração de insights por meio de modelagem de dados relacionais",
+        "Criação de análises exploratórias para processamento de dados",
+        "Utilização de técnicas estatísticas para interpretação de resultados (EDA)",
+      ],
     },
   ];
 
@@ -58,14 +98,14 @@ function App() {
 
         <i
           onClick={handleMenuClick}
-          className={isActive ? "bx bx-x" : "bx bx-menu"}
+          className={isActive ? "bx bx-menu" : "bx bx-x"}
           id="menu-icon"></i>
 
         <nav
           className={isActive ? "navbar" : "navbar active"}>
-          <a href="#home">Home</a>
+          <a href="#home">Início</a>
           <a href="#experiences">Experiência</a>
-          <a href="#projects">projects</a>
+          <a href="#projects">Projetos</a>
           <a href="#contact">Contato</a>
         </nav>
       </header>
@@ -97,15 +137,6 @@ function App() {
             seguir.
           </p>
 
-          {/* <div className="social-icons">
-            <a href="https://www.linkedin.com/in/matheus-alexandre-sj/">
-              <i className="bx bxl-linkedin"></i>
-            </a>
-            <a href="https://github.com/Mat-Alexandre/">
-              <i className="bx bxl-github"></i>
-            </a>
-          </div> */}
-
           <div className="btn-group">
             <a className="btn" href="#contact">
               Contato
@@ -119,71 +150,53 @@ function App() {
       </section>
 
       <section className="experiences" id="experiences">
-        <h2 className="heading">Experiência</h2>
-        <div className="timeline-items">
-          {experiences.map((item, i) => {
+        <div className="timeline-row">
+          <div className="timeline-col">
+            <h2 className="heading">
+              <MortarboardSvg />
+              Experiência
+            </h2>
+
+            <div className="timeline-box">
+              {experiences.map((experience, pos) => {
+                return (
+                  <TimelineItem
+                    content={experience.content}
+                    startYear={experience.startYear}
+                    endYear={experience.endYear}
+                    title={experience.title}
+                    key={pos}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="projects" id="projects">
+        <h2 className="heading">
+          <EaselSvg />
+          Projetos
+        </h2>
+        <div className="projects-container">
+          {projects.map((project, i) => {
             return (
-              <TimelineItem
+              <ProjectItem
+                title={project.title}
+                children={project.children}
+                url={project.url}
+                description={project.description}
                 key={i}
-                title={item.title}
-                content={item.content}
-                year={item.year}
-                url={item.url}
               />
             );
           })}
         </div>
       </section>
 
-      <section className="projects" id="projects">
-        <h2 className="heading">projects</h2>
-        <div className="projects-container">
-          <div className="project-box">
-            <div className="project-info">
-              <i className="bx bxl-figma"></i>
-              <h4>UI / UX</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Fugit laboriosam nihil
-                dignissimos modi harum quae excepturi? Quis,
-                quaerat, similique labore esse fuga at ex
-                laborum molestias inventore eius commodi ut?
-              </p>
-            </div>
-          </div>
-
-          <div className="project-box">
-            <div className="project-info">
-              <i className="bx bx-code"></i>
-              <h4>Frontend Development</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Fugit laboriosam nihil
-                dignissimos modi harum quae excepturi? Quis,
-                quaerat, similique labore esse fuga at ex
-                laborum molestias inventore eius commodi ut?
-              </p>
-            </div>
-          </div>
-
-          <div className="project-box">
-            <div className="project-info">
-              <i className="bx bx-code-curly"></i>
-              <h4>Backend Development</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Fugit laboriosam nihil
-                dignissimos modi harum quae excepturi? Quis,
-                quaerat, similique labore esse fuga at ex
-                laborum molestias inventore eius commodi ut?
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="contact" id="contact">
         <h2 className="heading">
+          <PersonSvg />
           Fale <span>Comigo</span>
         </h2>
         <div className="content">
@@ -211,6 +224,10 @@ function App() {
 
           <li>
             <a href="#experiences">Experiência</a>
+          </li>
+
+          <li>
+            <a href="#projects">Projetos</a>
           </li>
 
           <li>

@@ -1,32 +1,31 @@
 import "./TimelineItem.css";
 
 export interface TimelineItemProps {
+  startYear: number;
+  endYear?: number;
   title: string;
-  year: number;
   content: string[];
-  url: string;
 }
 
 function TimelineItem({
   title,
-  year,
+  startYear,
+  endYear,
   content,
-  url,
 }: TimelineItemProps) {
   return (
-    <div className="timeline-item">
-      <div className="timeline-dot"></div>
-      <div className="timeline-date">{year}</div>
-      <div
-        onClick={() => window.open(url, "_blank")}
-        className="timeline-content">
-        <h3>{title}</h3>
-        <ul>
-          {content.map((s) => {
-            return <li>{s}</li>;
-          })}
-        </ul>
+    <div className="content-box">
+      <div className="date">
+        <i className="bx bx-calendar"></i>
+        {startYear} - {endYear}
       </div>
+      <h3>{title}</h3>
+
+      <ul>
+        {content.map((str, i) => {
+          return <li key={i}>{str}</li>;
+        })}
+      </ul>
     </div>
   );
 }
