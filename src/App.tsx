@@ -98,11 +98,11 @@ function App() {
 
         <i
           onClick={handleMenuClick}
-          className={isActive ? "bx bx-menu" : "bx bx-x"}
+          className={isActive ? "bx bx-x" : "bx bx-menu"}
           id="menu-icon"></i>
 
         <nav
-          className={isActive ? "navbar" : "navbar active"}>
+          className={isActive ? "navbar active" : "navbar"}>
           <a href="#home">Início</a>
           <a href="#experiences">Experiência</a>
           <a href="#projects">Projetos</a>
