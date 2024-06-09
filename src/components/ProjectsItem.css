@@ -1,0 +1,45 @@
+.project-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10rem;
+  background-color: var(--main-color);
+  height: 600px;
+  border-radius: 3rem;
+  cursor: pointer;
+  border: 5px solid transparent;
+  transition: 0.4s ease-in-out;
+}
+
+.project-box:hover {
+  background: var(--second-bg-color);
+  color: var(--main-color);
+  border: 5px solid var(--main-color);
+  transform: scale(1.03);
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+.project-info h4 {
+  font-size: 2rem;
+  margin: 2rem 0;
+  font-weight: 800;
+}
+
+.project-info p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.project-info svg {
+  transform: scale(3);
+  margin-bottom: 1rem;
+}

@@ -1,105 +1,47 @@
-.timeline-items {
-  width: 70vw;
-  min-width: 1200px;
-  margin: auto;
+.content-box {
+  max-width: 500px;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.timeline-items::before {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 100%;
-  background-color: var(--main-color);
-  left: calc(50% - 1px);
-}
-
-.timeline-item {
-  margin-bottom: 40px;
-  width: 100%;
-  position: relative;
-}
-
-.timeline-item:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-item:nth-child(odd) {
-  padding-right: calc(50% + 30px);
-  text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-  padding-left: calc(50% + 30px);
-}
-
-.timeline-dot {
-  height: 21px;
-  width: 21px;
-  background-color: var(--main-color);
-  box-shadow: 0 0 25px var(--main-color),
-    0 0 50px var(--main-color);
-  position: absolute;
-  left: calc(50% - 8px);
-  border-radius: 50%;
-  top: 10px;
-}
-
-.timeline-date {
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
-  margin: 6px 0 15px;
-}
-
-.timeline-content {
-  background-color: var(--bg-color);
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  margin: 0 2rem;
+  background-color: var(--second-bg-color);
+  backdrop-filter: blur(20px);
   border: 3px solid var(--main-color);
-  padding: 30px 50px;
-  border-radius: 4rem;
-  box-shadow: 0 0 10px var(--main-color);
+  border-radius: 1rem;
+  font-size: 14px;
+  transition: 0.4 ease-in-out;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
-  text-align: left;
 }
 
-.timeline-content:hover {
-  transform: scale(1.05);
+.content-box:hover {
   box-shadow: 0 0 25px var(--main-color);
+  border: 3px solid var(--main-color);
 }
 
-.timeline-content h3 {
-  font-size: 20px;
-  color: white;
-  margin: 0 0 10px;
-  font-weight: 500;
+.content-box li {
+  list-style: none;
+  padding-left: 0.5rem;
 }
 
-.timeline-content ul li {
-  color: white;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 22px;
+.content-box h3 {
+  font-size: 1.3rem;
 }
 
-@media (max-width: 991px) {
-  .timeline-items::before {
-    left: 7px;
-  }
+.date {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 700;
+}
 
-  .timeline-item:nth-child(odd) {
-    padding-right: 0;
-    text-align: left;
-  }
-
-  .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even) {
-    padding-left: 37px;
-  }
-
-  .timeline-dot {
-    left: 0;
-  }
+.content-box:before {
+  position: absolute;
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  left: -37px;
+  top: 60px;
 }
