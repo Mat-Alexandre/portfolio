@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import profile_pic from "./assets/profile-pic.jpeg";
 import TimelineItem, {
@@ -5,7 +6,7 @@ import TimelineItem, {
 } from "./components/TimelineItem";
 
 function App() {
-  const projects: TimelineItemProps[] = [
+  const experiences: TimelineItemProps[] = [
     {
       year: 2021,
       title: "Breakthrough de Pacientes Hospitalizados",
@@ -63,7 +64,8 @@ function App() {
         <nav
           className={isActive ? "navbar" : "navbar active"}>
           <a href="#home">Home</a>
-          <a href="#projects">Projetos</a>
+          <a href="#experiences">Experiência</a>
+          <a href="#projects">projects</a>
           <a href="#contact">Contato</a>
         </nav>
       </header>
@@ -116,10 +118,10 @@ function App() {
         </div>
       </section>
 
-      <section className="projects" id="projects">
-        <h2 className="heading">Projetos</h2>
+      <section className="experiences" id="experiences">
+        <h2 className="heading">Experiência</h2>
         <div className="timeline-items">
-          {projects.map((item, i) => {
+          {experiences.map((item, i) => {
             return (
               <TimelineItem
                 key={i}
@@ -130,6 +132,53 @@ function App() {
               />
             );
           })}
+        </div>
+      </section>
+
+      <section className="projects" id="projects">
+        <h2 className="heading">projects</h2>
+        <div className="projects-container">
+          <div className="project-box">
+            <div className="project-info">
+              <i className="bx bxl-figma"></i>
+              <h4>UI / UX</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Fugit laboriosam nihil
+                dignissimos modi harum quae excepturi? Quis,
+                quaerat, similique labore esse fuga at ex
+                laborum molestias inventore eius commodi ut?
+              </p>
+            </div>
+          </div>
+
+          <div className="project-box">
+            <div className="project-info">
+              <i className="bx bx-code"></i>
+              <h4>Frontend Development</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Fugit laboriosam nihil
+                dignissimos modi harum quae excepturi? Quis,
+                quaerat, similique labore esse fuga at ex
+                laborum molestias inventore eius commodi ut?
+              </p>
+            </div>
+          </div>
+
+          <div className="project-box">
+            <div className="project-info">
+              <i className="bx bx-code-curly"></i>
+              <h4>Backend Development</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur,
+                adipisicing elit. Fugit laboriosam nihil
+                dignissimos modi harum quae excepturi? Quis,
+                quaerat, similique labore esse fuga at ex
+                laborum molestias inventore eius commodi ut?
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -161,7 +210,7 @@ function App() {
           </li>
 
           <li>
-            <a href="#projects">Projetos</a>
+            <a href="#experiences">Experiência</a>
           </li>
 
           <li>
