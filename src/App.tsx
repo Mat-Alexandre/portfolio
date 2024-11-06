@@ -8,6 +8,7 @@ import EyeSvg from "./assets/eye.svg";
 import MortarboardSvg from "./assets/mortarboard.svg";
 import PersonSvg from "./assets/person.svg";
 import VirusSvg from "./assets/virus.svg";
+import DashboardSvg from "./assets/dashboard.svg";
 
 import TimelineItem, {
   TimelineItemProps,
@@ -40,6 +41,14 @@ function App() {
         "Treinamento de modelo de visão computacional. Rotulação de imagens para criação de dataset. Utilização de Redes Neurais Convolucionais",
       url: "https://github.com/Mat-Alexandre/Coin-Counter",
       children: <EyeSvg />,
+    },
+
+    {
+      title: "Análise de Dados - IDEB",
+      description:
+        "Resolução de case técnico SP Parcerias. Análise descritiva dos dados do IDEB 2019 e 2023. Tratamento e formatação da base de dados.",
+      url: "https://github.com/Mat-Alexandre/SPParcerias-Case",
+      children: <DashboardSvg />,
     },
   ];
 
